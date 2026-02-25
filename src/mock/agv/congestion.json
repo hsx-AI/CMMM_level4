@@ -1,0 +1,21 @@
+{
+  "records": [
+    { "edgeId": "e07", "hour": 8, "heat": 0.82 },
+    { "edgeId": "e08", "hour": 8, "heat": 0.78 },
+    { "edgeId": "e24", "hour": 8, "heat": 0.67 },
+    { "edgeId": "e25", "hour": 8, "heat": 0.71 },
+    { "edgeId": "e28", "hour": 8, "heat": 0.54 },
+
+    { "edgeId": "e12", "hour": 10, "heat": 0.9 },
+    { "edgeId": "e13", "hour": 10, "heat": 0.88 },
+    { "edgeId": "e29", "hour": 10, "heat": 0.84 },
+    { "edgeId": "e31", "hour": 10, "heat": 0.81 },
+    { "edgeId": "e32", "hour": 10, "heat": 0.77 },
+
+    { "edgeId": "e14", "hour": 14, "heat": 0.58 },
+    { "edgeId": "e15", "hour": 14, "heat": 0.66 },
+    { "edgeId": "e35", "hour": 14, "heat": 0.73 },
+    { "edgeId": "e37", "hour": 14, "heat": 0.69 },
+    { "edgeId": "e38", "hour": 14, "heat": 0.64 }
+  ]
+}

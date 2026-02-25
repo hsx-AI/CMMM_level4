@@ -1,0 +1,23 @@
+{
+  "tasks": [
+    { "id": "A-T01", "caseId": "caseA", "from": "n01", "to": "n14", "materialType": "硅钢卷", "priority": 3, "timeWindowStart": "08:00", "timeWindowEnd": "08:35", "quantity": 24 },
+    { "id": "A-T02", "caseId": "caseA", "from": "n02", "to": "n19", "materialType": "冷轧板", "priority": 2, "timeWindowStart": "08:05", "timeWindowEnd": "08:45", "quantity": 18 },
+    { "id": "A-T03", "caseId": "caseA", "from": "n13", "to": "n08", "materialType": "铜排", "priority": 1, "timeWindowStart": "08:15", "timeWindowEnd": "09:00", "quantity": 12 },
+    { "id": "A-T04", "caseId": "caseA", "from": "n20", "to": "n07", "materialType": "绝缘胶", "priority": 2, "timeWindowStart": "08:25", "timeWindowEnd": "09:10", "quantity": 16 },
+    { "id": "A-T05", "caseId": "caseA", "from": "n14", "to": "n01", "materialType": "铝母线", "priority": 1, "timeWindowStart": "08:35", "timeWindowEnd": "09:25", "quantity": 10 },
+
+    { "id": "B-T01", "caseId": "caseB", "from": "n03", "to": "n16", "materialType": "冲压模具钢", "priority": 3, "timeWindowStart": "10:00", "timeWindowEnd": "10:30", "quantity": 22 },
+    { "id": "B-T02", "caseId": "caseB", "from": "n04", "to": "n21", "materialType": "冷轧板", "priority": 2, "timeWindowStart": "10:05", "timeWindowEnd": "10:40", "quantity": 17 },
+    { "id": "B-T03", "caseId": "caseB", "from": "n10", "to": "n22", "materialType": "冲压模具钢", "priority": 2, "timeWindowStart": "10:10", "timeWindowEnd": "10:50", "quantity": 15 },
+    { "id": "B-T04", "caseId": "caseB", "from": "n15", "to": "n09", "materialType": "铝母线", "priority": 1, "timeWindowStart": "10:15", "timeWindowEnd": "11:00", "quantity": 11 },
+    { "id": "B-T05", "caseId": "caseB", "from": "n21", "to": "n04", "materialType": "铜排", "priority": 3, "timeWindowStart": "10:20", "timeWindowEnd": "10:55", "quantity": 23 },
+    { "id": "B-T06", "caseId": "caseB", "from": "n09", "to": "n03", "materialType": "绝缘胶", "priority": 1, "timeWindowStart": "10:35", "timeWindowEnd": "11:10", "quantity": 9 },
+
+    { "id": "C-T01", "caseId": "caseC", "from": "n06", "to": "n11", "materialType": "液压阀芯", "priority": 2, "timeWindowStart": "14:00", "timeWindowEnd": "14:40", "quantity": 7 },
+    { "id": "C-T02", "caseId": "caseC", "from": "n11", "to": "n18", "materialType": "工业润滑剂", "priority": 1, "timeWindowStart": "14:08", "timeWindowEnd": "14:50", "quantity": 6 },
+    { "id": "C-T03", "caseId": "caseC", "from": "n18", "to": "n23", "materialType": "电缆桥架", "priority": 2, "timeWindowStart": "14:12", "timeWindowEnd": "14:55", "quantity": 8 },
+    { "id": "C-T04", "caseId": "caseC", "from": "n05", "to": "n12", "materialType": "变频器模块", "priority": 3, "timeWindowStart": "14:18", "timeWindowEnd": "14:38", "quantity": 5 },
+    { "id": "C-T05", "caseId": "caseC", "from": "n12", "to": "n17", "materialType": "密封件", "priority": 2, "timeWindowStart": "14:22", "timeWindowEnd": "15:00", "quantity": 6 },
+    { "id": "C-T06", "caseId": "caseC", "from": "n23", "to": "n06", "materialType": "动力备件", "priority": 1, "timeWindowStart": "14:28", "timeWindowEnd": "15:10", "quantity": 7 }
+  ]
+}

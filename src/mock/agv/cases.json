@@ -1,0 +1,31 @@
+{
+  "cases": [
+    {
+      "id": "caseA",
+      "title": "案例A 线圈分厂",
+      "workshopId": "coil_factory",
+      "summary": "减少交叉绕行，缩短总运输距离与节拍。",
+      "focus": ["distance", "duration", "crossRoute"],
+      "startHour": 8,
+      "depotNode": "n08"
+    },
+    {
+      "id": "caseB",
+      "title": "案例B 冲剪分厂",
+      "workshopId": "stamping_cutting_factory",
+      "summary": "高峰任务堆积场景，降低拥堵等待，提高AGV利用率。",
+      "focus": ["waiting", "utilization", "queue"],
+      "startHour": 10,
+      "depotNode": "n10"
+    },
+    {
+      "id": "caseC",
+      "title": "案例C 水电分厂",
+      "workshopId": "utilities_workshop",
+      "summary": "多频次小批量任务，降低空载率并提升任务合并率。",
+      "focus": ["emptyRate", "mergeRate", "smallBatch"],
+      "startHour": 14,
+      "depotNode": "n12"
+    }
+  ]
+}

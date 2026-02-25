@@ -1,0 +1,18 @@
+{
+  "weekdayFactor": [0.88, 0.96, 1.05, 1.08, 1.12, 0.78, 0.62],
+  "monthFactor": [0.92, 0.94, 1.01, 1.03, 1.06, 1.09, 1.12, 1.08, 1.02, 1.04, 1.06, 0.98],
+  "materialPool": [
+    { "code": "M001", "name": "硅钢卷", "priceFactor": 1.18, "riskWeight": 0.25 },
+    { "code": "M002", "name": "冷轧板", "priceFactor": 1.05, "riskWeight": 0.22 },
+    { "code": "M003", "name": "铝母线", "priceFactor": 1.32, "riskWeight": 0.2 },
+    { "code": "M004", "name": "绝缘胶", "priceFactor": 0.9, "riskWeight": 0.3 },
+    { "code": "M005", "name": "冲压模具钢", "priceFactor": 1.46, "riskWeight": 0.16 },
+    { "code": "M006", "name": "铜排", "priceFactor": 1.68, "riskWeight": 0.14 },
+    { "code": "M007", "name": "轴承组件", "priceFactor": 1.25, "riskWeight": 0.31 },
+    { "code": "M008", "name": "液压阀芯", "priceFactor": 1.55, "riskWeight": 0.28 },
+    { "code": "M009", "name": "工业润滑剂", "priceFactor": 0.82, "riskWeight": 0.33 },
+    { "code": "M010", "name": "电缆桥架", "priceFactor": 1.08, "riskWeight": 0.24 },
+    { "code": "M011", "name": "变频器模块", "priceFactor": 1.92, "riskWeight": 0.18 },
+    { "code": "M012", "name": "密封件", "priceFactor": 0.78, "riskWeight": 0.37 }
+  ]
+}
