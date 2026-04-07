@@ -43,6 +43,7 @@
             v-else
             ref="agvSceneRef"
             :case-result="agvModel.result.value"
+            :strategy="agvModel.strategy.value"
             :playing="agvPlaying"
           />
         </section>

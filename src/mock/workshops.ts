@@ -23,7 +23,7 @@ export const WORKSHOPS: WorkshopInfo[] = [
     description: "负责线圈卷材入厂检验、分拣及预加工。",
     kpi: {
       inventoryTons: 2860,
-      inventoryAmountWan: 5320,
+      inventoryAmountWan: 20680,
       turnoverRate: 7.8,
       stagnantRate: 3.4
     }
@@ -40,7 +40,7 @@ export const WORKSHOPS: WorkshopInfo[] = [
     description: "承担板材冲压、裁切与质量复检。",
     kpi: {
       inventoryTons: 1940,
-      inventoryAmountWan: 3680,
+      inventoryAmountWan: 13250,
       turnoverRate: 8.3,
       stagnantRate: 2.6
     }
@@ -57,7 +57,7 @@ export const WORKSHOPS: WorkshopInfo[] = [
     description: "保障全厂水、电、气和动力设备稳定运行，承担配电变电及给排水管理。",
     kpi: {
       inventoryTons: 620,
-      inventoryAmountWan: 1280,
+      inventoryAmountWan: 13230,
       turnoverRate: 4.9,
       stagnantRate: 5.8
     }
@@ -74,7 +74,7 @@ export const WORKSHOPS: WorkshopInfo[] = [
     description: "公司级集中仓储，涵盖有色库、五金一级库等，负责大宗原材料集中收储与调拨。",
     kpi: {
       inventoryTons: 4250,
-      inventoryAmountWan: 8960,
+      inventoryAmountWan: 32160,
       turnoverRate: 5.2,
       stagnantRate: 4.1
     }

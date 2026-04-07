@@ -299,35 +299,65 @@ export function useThreeScene(options: UseThreeSceneOptions) {
 
       const wsWarehouses = warehouses.filter((w) => w.workshopId === workshopId);
       const totalInventory = wsWarehouses.reduce((s, w) => s + w.currentInventory, 0);
+      const totalCapacity = wsWarehouses.reduce((s, w) => s + w.capacity, 0);
       const avgOccupancy = wsWarehouses.length
         ? wsWarehouses.reduce((s, w) => s + w.occupancyRate, 0) / wsWarehouses.length
         : 0;
+      const totalAmount = wsWarehouses.reduce((s, w) => s + w.currentAmount, 0);
+      const avgTurnoverRate = wsWarehouses.length
+        ? wsWarehouses.reduce((s, w) => s + w.turnoverRate, 0) / wsWarehouses.length
+        : 0;
+      const avgStagnantRatio = wsWarehouses.length
+        ? wsWarehouses.reduce((s, w) => s + w.stagnantRatio, 0) / wsWarehouses.length
+        : 0;
+      const todayInbound = wsWarehouses.reduce((s, w) => s + w.baseInbound, 0);
+      const todayOutbound = wsWarehouses.reduce((s, w) => s + w.baseOutbound, 0);
+
+      const occupancyColor = avgOccupancy > 80 ? "#dc2626" : avgOccupancy > 60 ? "#d97706" : "#16a34a";
+      const stagnantColor = avgStagnantRatio > 5 ? "#dc2626" : avgStagnantRatio > 3 ? "#d97706" : "#16a34a";
 
       const el = document.createElement("div");
       Object.assign(el.style, {
         position: "absolute",
         pointerEvents: "none",
-        padding: "8px 14px",
-        borderRadius: "8px",
-        background: "rgba(255,255,255,0.95)",
+        padding: "10px 16px",
+        borderRadius: "10px",
+        background: "rgba(255,255,255,0.96)",
         border: "1px solid #cbd5e1",
-        boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+        boxShadow: "0 4px 16px rgba(0,0,0,0.12)",
         color: "#1e293b",
         fontSize: "11px",
-        lineHeight: "1.6",
+        lineHeight: "1.7",
         whiteSpace: "nowrap",
         transform: "translate(-50%, -100%) translateY(-8px)",
         zIndex: "5",
-        backdropFilter: "blur(4px)"
+        backdropFilter: "blur(6px)"
       });
 
-      const nameSpan = `<div style="font-weight:700;font-size:12px;color:#2b6cb0;margin-bottom:3px">${workshop.name}</div>`;
-      const lines = [
-        `<span style="color:#64748b">库存</span> <b>${totalInventory.toLocaleString()}</b> 吨`,
-        `<span style="color:#64748b">占用</span> <b>${avgOccupancy.toFixed(1)}%</b>`,
-        `<span style="color:#64748b">仓库</span> <b>${wsWarehouses.length}</b> 个`
-      ];
-      el.innerHTML = nameSpan + lines.join('<span style="color:#cbd5e1;margin:0 6px">|</span>');
+      const nameSpan = `<div style="font-weight:700;font-size:13px;color:#2b6cb0;margin-bottom:4px;border-bottom:1px solid #e2e8f0;padding-bottom:4px">${workshop.name}</div>`;
+
+      const row1 = [
+        `<span style="color:#64748b">仓库</span> <b>${wsWarehouses.length}</b>个`,
+        `<span style="color:#64748b">总容量</span> <b>${totalCapacity.toLocaleString()}</b>吨`,
+        `<span style="color:#64748b">占用率</span> <b style="color:${occupancyColor}">${avgOccupancy.toFixed(1)}%</b>`
+      ].join('<span style="color:#cbd5e1;margin:0 5px">|</span>');
+
+      const row2 = [
+        `<span style="color:#64748b">库存</span> <b>${totalInventory.toLocaleString()}</b>吨`,
+        `<span style="color:#64748b">金额</span> <b>${(totalAmount / 10000).toFixed(0)}</b>万元`,
+        `<span style="color:#64748b">周转率</span> <b>${avgTurnoverRate.toFixed(1)}</b>次/年`
+      ].join('<span style="color:#cbd5e1;margin:0 5px">|</span>');
+
+      const row3 = [
+        `<span style="color:#64748b">今日入库</span> <b style="color:#2563eb">${todayInbound}</b>吨`,
+        `<span style="color:#64748b">今日出库</span> <b style="color:#16a34a">${todayOutbound}</b>吨`,
+        `<span style="color:#64748b">呆滞率</span> <b style="color:${stagnantColor}">${avgStagnantRatio.toFixed(1)}%</b>`
+      ].join('<span style="color:#cbd5e1;margin:0 5px">|</span>');
+
+      el.innerHTML = nameSpan
+        + `<div>${row1}</div>`
+        + `<div>${row2}</div>`
+        + `<div>${row3}</div>`;
       container.appendChild(el);
 
       bubbles.push({ el, group });

@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import type { AgvCaseRunResult, AgvEdge, AgvNode } from "@/types/agv";
+import slamMapUrl from "@/assets/slam-map.png";
 
 interface UseAgvSceneOptions {
   container: HTMLElement;
@@ -48,48 +49,52 @@ export function useAgvScene(options: UseAgvSceneOptions) {
   renderer.toneMappingExposure = 1.4;
   container.appendChild(renderer.domElement);
 
-  camera.position.set(128, 108, 152);
+  camera.position.set(0, 340, 200);
   controls.enableDamping = true;
   controls.dampingFactor = 0.08;
   controls.maxPolarAngle = Math.PI * 0.49;
-  controls.minDistance = 45;
-  controls.maxDistance = 360;
+  controls.minDistance = 80;
+  controls.maxDistance = 600;
   controls.target.set(0, 0, 0);
 
   initScene();
   animate();
 
   function initScene() {
-    scene.fog = new THREE.FogExp2("#e8eef4", 0.003);
+    scene.fog = new THREE.FogExp2("#e8eef4", 0.0015);
 
     const hemiLight = new THREE.HemisphereLight(0xffffff, 0xb0c4d8, 0.9);
     scene.add(hemiLight);
 
     const dir = new THREE.DirectionalLight(0xffffff, 1.1);
-    dir.position.set(140, 170, 100);
+    dir.position.set(200, 260, 150);
     scene.add(dir);
 
-    const fillLight = new THREE.PointLight(0x88bbff, 0.25, 400);
-    fillLight.position.set(-80, 40, -60);
+    const fillLight = new THREE.PointLight(0x88bbff, 0.25, 600);
+    fillLight.position.set(-120, 60, -90);
     scene.add(fillLight);
 
+    const textureLoader = new THREE.TextureLoader();
+    const slamTexture = textureLoader.load(slamMapUrl);
+    slamTexture.colorSpace = THREE.SRGBColorSpace;
+    slamTexture.minFilter = THREE.LinearFilter;
+    slamTexture.magFilter = THREE.LinearFilter;
+
+    const mapWidth = 262;
+    const mapHeight = 297;
     const ground = new THREE.Mesh(
-      new THREE.PlaneGeometry(320, 230),
+      new THREE.PlaneGeometry(mapWidth, mapHeight),
       new THREE.MeshStandardMaterial({
-        color: "#d5dfe8",
-        roughness: 0.85,
-        metalness: 0.15,
+        map: slamTexture,
+        roughness: 0.9,
+        metalness: 0.05,
         transparent: true,
-        opacity: 0.9
+        opacity: 0.92
       })
     );
     ground.rotation.x = -Math.PI / 2;
     ground.position.y = -0.2;
     scene.add(ground);
-
-    const grid = new THREE.GridHelper(320, 40, 0xb0c4d8, 0xc8d6e0);
-    grid.position.y = -0.1;
-    scene.add(grid);
 
     scene.add(buildNetworkLines());
     scene.add(buildNodeMarkers());
@@ -120,7 +125,7 @@ export function useAgvScene(options: UseAgvSceneOptions) {
 
   function buildNodeMarkers() {
     const group = new THREE.Group();
-    const geometry = new THREE.CylinderGeometry(0.7, 0.7, 0.5, 10);
+    const geometry = new THREE.CylinderGeometry(1.6, 1.6, 0.6, 10);
     const material = new THREE.MeshStandardMaterial({
       color: "#4a90c4",
       emissive: "#4a90c4",
@@ -153,7 +158,7 @@ export function useAgvScene(options: UseAgvSceneOptions) {
       if (!points.length) return;
       const agvColor = ["#2b6cb0", "#d97706", "#16a34a"][index % 3];
       const mesh = new THREE.Mesh(
-        new THREE.BoxGeometry(2.8, 1.8, 3.4),
+        new THREE.BoxGeometry(5.6, 3.2, 6.8),
         new THREE.MeshStandardMaterial({
           color: agvColor,
           emissive: agvColor,
@@ -163,14 +168,14 @@ export function useAgvScene(options: UseAgvSceneOptions) {
         })
       );
       mesh.position.copy(points[0]);
-      mesh.position.y = 1.4;
+      mesh.position.y = 2.4;
       agvGroup.add(mesh);
       actors.push({
         mesh,
         route: points,
         distanceCursor: 0,
         totalDistance: computePolylineDistance(points),
-        speed: 12 + index * 1.4
+        speed: 28 + index * 3
       });
     });
   }
@@ -188,7 +193,7 @@ export function useAgvScene(options: UseAgvSceneOptions) {
       actor.distanceCursor = 0;
       if (actor.route.length) {
         actor.mesh.position.copy(actor.route[0]);
-        actor.mesh.position.y = 1.4;
+        actor.mesh.position.y = 2.4;
       }
     });
   }
@@ -230,7 +235,7 @@ export function useAgvScene(options: UseAgvSceneOptions) {
           actor.distanceCursor = actor.totalDistance;
         }
         const pos = samplePolyline(actor.route, actor.distanceCursor);
-        actor.mesh.position.set(pos.x, 1.4, pos.z);
+        actor.mesh.position.set(pos.x, 2.4, pos.z);
       });
     }
 
